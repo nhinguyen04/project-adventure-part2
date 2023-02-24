@@ -52,17 +52,35 @@ class Room {
   }
 
   getItemByName(name) {
+    let itemIndex;
 
-    // Fill this in
+    for (let i = 0; i < this.items.length; i++) {
+        const item = this.items[i];
+        if (item.name === name) { itemIndex = i; }
+    }
+
+    const item = this.items.splice(itemIndex, 1);
+    return item[0];
 
   }
 
   getEnemyByName(name) {
+    let enemyIndex;
+    let enemies = this.getEnemies();
 
-    // Fill this in
+    for (let i = 0; i < enemies.length; i++) {
+      const enemy = enemies[i];
+      if (enemy.name === name) { enemyIndex = i; }
+    }
 
+    return enemies[enemyIndex];
+  }
 }
 
+
+
+
+// -----
 module.exports = {
   Room,
 };
