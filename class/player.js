@@ -1,6 +1,8 @@
 const {Character} = require('./character');
+const { DarkRoom } = require('./darkroom');
 const {Enemy} = require('./enemy');
 const {Food} = require('./food');
+const {Light} = require('./light');
 
 class Player extends Character {
 
@@ -54,6 +56,7 @@ class Player extends Character {
       // drop into room
       this.currentRoom.items.push(item);
     }
+
     // if not, say doesn't exist
     else {
       console.log("No such item in room.");

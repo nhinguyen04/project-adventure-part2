@@ -1,4 +1,6 @@
 const { Room } = require("./room");
+const { DarkRoom } = require("./darkroom");
+const { Light } = require("./light");
 
 class Character {
 
@@ -27,11 +29,23 @@ class Character {
     this.items.forEach((ele) => {
       this.currentRoom.items.push(ele);
       console.log(`${ele} drops onto the floor.`);
+
+      // check if light drops into darkroom
+      this._checkLight(ele);
     })
     this.items = [];
 
     // currentRoom set to null
     this.currentRoom = null;
+  }
+
+  _checkLight(item) {
+    // check if in a dark room
+    if (this.currentRoom instanceof DarkRoom && item instanceof Light) {
+      // light up room
+      this.currentRoom.isLit();
+      console.log(this.currentRoom.description);
+    }
   }
 
 }
